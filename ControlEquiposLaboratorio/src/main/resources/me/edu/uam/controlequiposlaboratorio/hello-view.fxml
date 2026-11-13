@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="me.edu.uam.controlequiposlaboratorio.controller.EquipoController"
+            prefWidth="1100" prefHeight="640">
+
+    <top>
+        <VBox spacing="10" style="-fx-background-color: #1e293b; -fx-padding: 15;">
+            <Label text="Control de Equipos de Laboratorio"
+                   style="-fx-text-fill: white; -fx-font-size: 20px; -fx-font-weight: bold;"/>
+        </VBox>
+    </top>
+
+    <left>
+        <VBox spacing="10" prefWidth="300" style="-fx-padding: 15; -fx-background-color: #f8fafc; -fx-border-color: #e2e8f0;">
+            <Label text="Datos del Equipo" style="-fx-font-size: 15px; -fx-font-weight: bold;"/>
+
+            <Label text="ID (Autogenerado):"/>
+            <TextField fx:id="txtId" editable="false" disable="true" promptText="Generado automaticamente"/>
+
+            <Label text="Codigo *:"/>
+            <TextField fx:id="txtCodigo" promptText="Ej. EQ-009"/>
+
+            <Label text="Nombre *:"/>
+            <TextField fx:id="txtNombre" promptText="Nombre del equipo"/>
+
+            <Label text="Marca:"/>
+            <TextField fx:id="txtMarca" promptText="Marca del fabricante"/>
+
+            <Label text="Cantidad *:"/>
+            <TextField fx:id="txtCantidad" promptText="0 o mayor"/>
+
+            <Label text="Tipo de Equipo *:"/>
+            <ComboBox fx:id="cmbTipo" maxWidth="Infinity" promptText="Seleccione un tipo"/>
+
+            <Label text="Estado *:"/>
+            <ComboBox fx:id="cmbEstado" maxWidth="Infinity" promptText="Seleccione un estado"/>
+
+            <HBox spacing="8" style="-fx-padding: 10 0 0 0;">
+                <Button text="Guardar" onAction="#onGuardar" prefWidth="85" style="-fx-background-color: #16a34a; -fx-text-fill: white; -fx-font-weight: bold;"/>
+                <Button text="Actualizar" onAction="#onActualizar" prefWidth="85" style="-fx-background-color: #2563eb; -fx-text-fill: white; -fx-font-weight: bold;"/>
+                <Button text="Eliminar" onAction="#onEliminar" prefWidth="85" style="-fx-background-color: #dc2626; -fx-text-fill: white; -fx-font-weight: bold;"/>
+            </HBox>
+            <Button text="Limpiar Formulario / Restablecer" onAction="#onLimpiar" maxWidth="Infinity"/>
+        </VBox>
+    </left>
+
+    <center>
+        <VBox spacing="12" style="-fx-padding: 15;">
+            <HBox spacing="10" alignment="CENTER_LEFT" style="-fx-background-color: #f1f5f9; -fx-padding: 10; -fx-background-radius: 5;">
+                <Label text="Buscar por nombre:" minWidth="-Infinity"/>
+                <TextField fx:id="txtBuscarNombre" promptText="Fragmento del nombre..." prefWidth="180" HBox.hgrow="ALWAYS"/>
+                <Label text="Filtrar por tipo:" minWidth="-Infinity"/>
+                <ComboBox fx:id="cmbFiltroTipo" promptText="Todos los tipos" prefWidth="160"/>
+                <Button text="Buscar / Aplicar filtros" onAction="#onBuscar" minWidth="-Infinity" style="-fx-background-color: #0f172a; -fx-text-fill: white; -fx-padding: 6 14 6 14;"/>
+            </HBox>
+
+            <TableView fx:id="tablaEquipos" VBox.vgrow="ALWAYS">
+                <columnResizePolicy>
+                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+                </columnResizePolicy>
+                <columns>
+                    <TableColumn fx:id="colCodigo" text="Codigo" prefWidth="85"/>
+                    <TableColumn fx:id="colNombre" text="Nombre" prefWidth="190"/>
+                    <TableColumn fx:id="colMarca" text="Marca" prefWidth="100"/>
+                    <TableColumn fx:id="colEstado" text="Estado" prefWidth="130"/>
+                    <TableColumn fx:id="colCantidad" text="Cantidad" prefWidth="80"/>
+                    <TableColumn fx:id="colTipo" text="Tipo de Equipo" prefWidth="130"/>
+                </columns>
+            </TableView>
+        </VBox>
+    </center>
+
+</BorderPane>
